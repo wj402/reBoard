@@ -34,10 +34,12 @@
 	String sql = " SELECT unq,"; 
 		   sql+= "	title, ";
 		   sql+= "	name, "; 
-		   sql+= "	date_format(rdate, '%Y-%m-%d') rdate,"; // left(rdate,10), subString(1, 10)
-		   sql+= "	hits";
+		   sql+= "	date_format(rdate, '%Y-%m-%d') rdate, "; // left(rdate,10), subString(1, 10)
+		   sql+= "	hits, ";
+		   sql+= "  gid, ";
+		   sql+= "	thread ";
 		   sql+= "	FROM reboard ";
-		   sql+= " 	ORDER BY unq DESC ";
+		   sql+= " 	ORDER BY gid DESC, thread ASC ";
 		   sql+= "	LIMIT "+index_no+","+unit;	// limit 시작번호, 출력개수 (0, 10, 20)
 	ResultSet rs = stmt.executeQuery(sql);
 
@@ -106,10 +108,21 @@
 								String name = rs.getString("name");
 								String hits = rs.getString("hits");
 								String rdate = rs.getString("rdate");
+								String thread = rs.getString("thread");
+								// a (원글) , (aa,ab,ac,ad ~)(댓글), (aaa,aab,aac)
+								int len = thread.length();
+								String re = "";
+								if(len > 1) re = "[re]";
 						%>
 							<tr>
 								<td><%=rownumber %></td>
 								<td align="left">
+								<%
+									for(int i=1; i<len; i++) {
+										out.print("&nbsp;&nbsp;");
+									}
+								%>
+								<%=re %>
 									<a href="reBoardDetail.jsp?unq=<%=unq %>"><%=title %></a>
 								</td>
 								<td><%=name %></td>

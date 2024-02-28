@@ -19,7 +19,7 @@
 %>
 	<script>
 		alert("잘못된 경로의 접근입니다.")
-		location = "borderList.jsp" 
+		location = "boardList.jsp" 
 	</script>
 <%		
 	return;

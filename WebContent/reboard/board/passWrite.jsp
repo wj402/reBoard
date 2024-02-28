@@ -17,6 +17,7 @@
 	String delete_url = "boardDelete.jsp";
 	if( gubun.equals("R") ) {
 		delete_url = "reBoardDelete.jsp";
+	}
 %>
 
 <!DOCTYPE html>
