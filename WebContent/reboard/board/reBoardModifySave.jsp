@@ -19,7 +19,7 @@
 %>
 	<script>
 		alert("잘못된 경로의 접근입니다.")
-		location = "boardList.jsp" 
+		location = "reBordList.jsp" 
 	</script>
 <%		
 	return;
@@ -31,7 +31,7 @@
 	// unq : 7 ,, pass : 1234
 	// select count(*) from nboard where nuq='7' and pass='1234'
 	// result : 1 (일치) , 0 (비일치)
-	String sql = "select count(*) cnt from nboard	";
+	String sql = "select count(*) cnt from reboard	";
 		   sql+= "	where unq='"+unq+"' and pass='"+pass+"' ";
 	ResultSet rs = stmt.executeQuery(sql);
 	rs.next();
@@ -51,7 +51,7 @@
 <!-- UPDATE SQL 작성 및 적용 -->
 <%
 	// title, name, content, rdate
-	String sql2 = " update nboard set ";
+	String sql2 = " update reboard set ";
 		   sql2+= "		title='"+title+"', ";
 		   sql2+= " 	name='"+name+"', ";
 		   sql2+= "		content='"+content+"',	";
@@ -68,7 +68,7 @@
 %>
 	<script>
 		alert("변경완료");
-		location="boardList.jsp"
+		location="reBoardList.jsp"
 	</script>
 <%
 	
@@ -76,7 +76,7 @@
 %>
 	<script>
 		alert("변경실패\n관리자에게 문의해주세요.");
-		location="boardList.jsp"
+		location="reBoardList.jsp"
 	</script>
 <%
 	}
